@@ -3,6 +3,30 @@ import { useEffect } from "react";
 const clientId =
   'BGg06C3u5cKtQ8pY3sANCcwZe30Ch8qz7xbbd-1RAQsUBPeZThjuG6EH6qeTaBB-VKdii-oeOvp2uemQcHBNxKY'
 
+  // ⭐️ subscribe to lifecycle events emitted by web3auth
+const subscribeAuthEvents = (web3auth: any) => {
+  web3auth.on(ADAPTER_EVENTS.CONNECTED, (data: CONNECTED_EVENT_DATA) => {
+    console.log("connected to wallet", data);
+    // web3auth.provider will be available here after user is connected
+  });
+  web3auth.on(ADAPTER_EVENTS.CONNECTING, () => {
+    console.log("connecting");
+  });
+  web3auth.on(ADAPTER_EVENTS.DISCONNECTED, () => {
+    console.log("disconnected");
+  });
+  web3auth.on(ADAPTER_EVENTS.ERRORED, (error) => {
+    console.log("error", error);
+  });
+  web3auth.on(ADAPTER_EVENTS.ERRORED, (error) => {
+    console.log("error", error);
+  });
+  // emitted when modal visibility changes.
+  web3auth.on(LOGIN_MODAL_EVENTS.MODAL_VISIBILITY, (isVisible) => {
+    console.log("is modal visible", isVisible);
+  });
+};
+
 const useWeb3Auth = () => {
   const initWeb3Auth = async () => {
     console.log('🔑 initializing web3auth ...')
@@ -26,7 +50,9 @@ const useWeb3Auth = () => {
 
     web3auth.configureAdapter(openloginAdapter)
 
-    web3auth.initModal()
+    // web3auth.initModal()
+
+    window.web3_auth = web3auth
 
     console.log('🔑 web3auth initialized!')
   }
