@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-
-const clientId =
-  'BGg06C3u5cKtQ8pY3sANCcwZe30Ch8qz7xbbd-1RAQsUBPeZThjuG6EH6qeTaBB-VKdii-oeOvp2uemQcHBNxKY'
+  
 
 const useWeb3Auth = () => {
   const initWeb3Auth = async () => {
@@ -11,7 +9,7 @@ const useWeb3Auth = () => {
     if (!window.OpenloginAdapter) return console.error('window.OpenloginAdapter namespace not found')
   
     const web3auth = new window.Web3auth.Web3Auth({
-      clientId,
+      clientId: 'BGg06C3u5cKtQ8pY3sANCcwZe30Ch8qz7xbbd-1RAQsUBPeZThjuG6EH6qeTaBB-VKdii-oeOvp2uemQcHBNxKY',
       chainConfig: { chainNamespace: 'eip155', chainId: '0x3' },
       authMode: 'DAPP',
     })
@@ -19,7 +17,7 @@ const useWeb3Auth = () => {
     const openloginAdapter = new window.OpenloginAdapter.OpenloginAdapter({
       adapterSettings: {
         network: 'testnet',
-        clientId,
+        clientId: 'BG5FqoNkE0W0XJZ05s-I9RWCULJmtLg8J9y2eMUJv3kLouvay7z_XBzB5PysoUMBu4LD7aDzIqVKZktKhVtn6mA',
         uxMode: 'popup',
       },
     })
