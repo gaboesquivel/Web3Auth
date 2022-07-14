@@ -16,15 +16,15 @@ const useWeb3Auth = () => {
       authMode: 'DAPP',
     })
 
-    // const openloginAdapter = new window.OpenloginAdapter.OpenloginAdapter({
-    //   adapterSettings: {
-    //     network: 'testnet',
-    //     clientId,
-    //     uxMode: 'popup',
-    //   },
-    // })
+    const openloginAdapter = new window.OpenloginAdapter.OpenloginAdapter({
+      adapterSettings: {
+        network: 'testnet',
+        clientId,
+        uxMode: 'popup',
+      },
+    })
 
-    // web3auth.configureAdapter(openloginAdapter)
+    web3auth.configureAdapter(openloginAdapter)
 
     // make it globally accessible 
     window.web3_auth = web3auth
@@ -37,7 +37,6 @@ const useWeb3Auth = () => {
   const login = async () => {
     console.log('🔑 web3auth login')
     window.web3_auth_provider  = await window.web3_auth.connect();
-
     console.log('🔑 web3auth logged in!', window.web3_auth_provider)
   }
 
